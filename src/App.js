@@ -20,7 +20,8 @@ export default function App() {
         <Route path="/:movieId">
           <MovieDetailsView />
         </Route>
-        <Route path="/moviesPage">
+
+        <Route path="/moviesPage" exact>
           <MoviesPage />
         </Route>
 

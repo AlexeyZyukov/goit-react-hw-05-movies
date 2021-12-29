@@ -17,6 +17,6 @@ export function fetchMoviesInTrend() {
 
 export function fetchMovieFullInfo(movieId) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`,
+    `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
   );
 }
