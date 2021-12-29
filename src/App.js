@@ -3,6 +3,7 @@ import AppBar from './components/AppBar/AppBar';
 import HomePage from '../src/views/HomePage';
 import MoviesPage from './views/MoviesPage';
 import Container from './components/Container/Container';
+import NotFoundView from './views/Not FoundView';
 
 export default function App() {
   return (
@@ -14,8 +15,13 @@ export default function App() {
         <Route path="/" exact>
           <HomePage />
         </Route>
+
         <Route path="/moviesPage">
           <MoviesPage />
+        </Route>
+
+        <Route>
+          <NotFoundView />
         </Route>
       </Switch>
     </Container>

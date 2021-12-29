@@ -1,3 +1,5 @@
+import PageHeading from '../components/PageHeading/PageHeading';
+
 export default function MoviesPage() {
-  return 'Hi, this is Movies page';
+  return <PageHeading text="Movies" />;
 }
