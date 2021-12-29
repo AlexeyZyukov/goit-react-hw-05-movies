@@ -1,5 +1,11 @@
 import Navigation from '../Navigation/Navigation';
+import Container from '../Container/Container';
 
 export default function AppBar() {
-  return <Navigation />;
+  return (
+    <Container>
+      <Navigation />
+      <br />
+    </Container>
+  );
 }
