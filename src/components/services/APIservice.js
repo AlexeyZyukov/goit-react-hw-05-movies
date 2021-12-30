@@ -6,7 +6,7 @@ async function fetchWithErrorHandling(url = '') {
   // console.log(response);
   return response.ok
     ? await response.json()
-    : Promise.reject(new Error('Not found'));
+    : Promise.reject(new Error('Sorry, nothing was found'));
 }
 
 export function fetchMoviesInTrend() {
