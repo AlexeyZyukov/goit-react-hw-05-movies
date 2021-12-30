@@ -7,17 +7,18 @@ export default function MoviesList({ url, movies }) {
     <ul className={styles.wrapper}>
       {movies &&
         movies.map(item => (
-          <li key={item.id}>
-            <img
-              src={
-                item.poster_path
-                  ? `https://www.themoviedb.org/t/p/w300${item.poster_path}`
-                  : defaultImage
-              }
-              alt={item.title}
-            ></img>
-            {item.title ?? item.name}
-            {/* <Link to={`${url}/${item.id}`}>{item.title ?? item.name}</Link> */}
+          <li key={item.id} className={styles.noBullets}>
+            <Link to={`${url}${item.id}`}>
+              <img
+                src={
+                  item.poster_path
+                    ? `https://www.themoviedb.org/t/p/w300${item.poster_path}`
+                    : defaultImage
+                }
+                alt={item.title}
+              ></img>
+              <h4>{item.title ?? item.name}</h4>
+            </Link>
           </li>
         ))}
     </ul>
