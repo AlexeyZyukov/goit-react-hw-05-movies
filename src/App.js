@@ -10,16 +10,15 @@ export default function App() {
   return (
     <Container>
       <AppBar />
-      {/* <a href="/about">About</a> */}
 
       <Switch>
         <Route path="/" exact>
           <HomePage />
         </Route>
 
-        <Route path="/:movieId">
+        {/* <Route path="/:movieId">
           <MovieDetailsView />
-        </Route>
+        </Route> */}
 
         <Route path="/moviesPage" exact>
           <MoviesPage />
