@@ -16,14 +16,13 @@ export default function App() {
           <HomePage />
         </Route>
 
-        {/* <Route path="/:movieId">
-          <MovieDetailsView />
-        </Route> */}
-
         <Route path="/moviesPage" exact>
           <MoviesPage />
         </Route>
 
+        <Route path="/:movieId">
+          <MovieDetailsView />
+        </Route>
         <Route>
           <NotFoundView />
         </Route>
