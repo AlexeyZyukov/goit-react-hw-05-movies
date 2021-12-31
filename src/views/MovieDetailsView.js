@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Route, useRouteMatch } from 'react-router-dom';
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
+import GoBackButton from '../components/GoBackButton/GoBackButton';
+import Cast from '../components/Cast/Cast';
 import defaultImage from '../components/defaultImages/no_image_poster.jpg';
 import styles from './view.module.css';
 
 export default function MovieDetailsView() {
   const { movieId } = useParams();
+  const { url } = useRouteMatch;
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -17,9 +20,9 @@ export default function MovieDetailsView() {
   return (
     <>
       <PageHeading text={`Movie details`} />
-
+      <GoBackButton />
       {movie && (
-        <div className={styles.wrapper}>
+        <ul className={styles.wrapper}>
           <img
             src={
               movie.poster_path
@@ -44,6 +47,29 @@ export default function MovieDetailsView() {
               ? movie.genres.map(item => item.name).join(' ')
               : `unknown genre`}
           </p>
+        </ul>
+      )}
+      <hr />
+      {movie && (
+        <div>
+          <h2>Additional information</h2>
+          <Route path="/">
+            <Cast />
+          </Route>
+          {/* <nav>
+            <NavLink
+              to='/'
+              className={styles.link}
+              activeClassName={styles.activeLink}>
+              Cast
+            </NavLink>
+            <NavLink
+              to='/'
+              className={styles.link}
+              activeClassName={styles.activeLink}>
+              Review
+            </NavLink>
+          </nav> */}
         </div>
       )}
     </>

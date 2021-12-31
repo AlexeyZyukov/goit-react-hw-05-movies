@@ -23,6 +23,7 @@ export default function App() {
         <Route path="/:movieId">
           <MovieDetailsView />
         </Route>
+
         <Route>
           <NotFoundView />
         </Route>

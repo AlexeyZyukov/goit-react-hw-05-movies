@@ -9,7 +9,7 @@ export default function MoviesPage() {
         <input
           type="text"
           className={styles.inputField}
-          placeHolder="input movie to search"
+          placeholder="input movie to search"
         ></input>
         <button type="submit" className={styles.button}>
           Search
