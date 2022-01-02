@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Route, useRouteMatch } from 'react-router-dom';
+import { useParams, Route, useRouteMatch, NavLink } from 'react-router-dom';
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
 import GoBackButton from '../components/GoBackButton/GoBackButton';
@@ -9,14 +9,17 @@ import styles from './view.module.css';
 
 export default function MovieDetailsView() {
   const { movieId } = useParams();
-  const { url } = useRouteMatch;
+  const { url } = useRouteMatch();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     APIservice.fetchMovieFullInfo(movieId).then(setMovie);
   }, [movieId]);
 
-  console.log(movieId);
+  console.log(useParams());
+  console.log('movieId', movieId);
+  console.log('url: ', url);
+
   return (
     <>
       <PageHeading text={`Movie details`} />
@@ -24,13 +27,13 @@ export default function MovieDetailsView() {
       {movie && (
         <ul className={styles.wrapper}>
           <img
+            className={styles.box1}
             src={
               movie.poster_path
                 ? `https://www.themoviedb.org/t/p/w300${movie.poster_path}`
                 : defaultImage
             }
             alt={movie.title}
-            className={styles.box1}
           />
           <h2>{movie.original_title}</h2>
           <p>
@@ -53,23 +56,28 @@ export default function MovieDetailsView() {
       {movie && (
         <div>
           <h2>Additional information</h2>
-          <Route path="/">
+          <nav>
+            <NavLink
+              to={`${url}`}
+              className={styles.link}
+              activeClassName={styles.activeLink}
+            >
+              <li>Cast</li>
+            </NavLink>
+
+            <NavLink
+              to="/"
+              className={styles.link}
+              activeClassName={styles.activeLink}
+            >
+              <li>Review</li>
+            </NavLink>
+          </nav>
+
+          <hr />
+          <Route path={`${url}`}>
             <Cast />
           </Route>
-          {/* <nav>
-            <NavLink
-              to='/'
-              className={styles.link}
-              activeClassName={styles.activeLink}>
-              Cast
-            </NavLink>
-            <NavLink
-              to='/'
-              className={styles.link}
-              activeClassName={styles.activeLink}>
-              Review
-            </NavLink>
-          </nav> */}
         </div>
       )}
     </>
