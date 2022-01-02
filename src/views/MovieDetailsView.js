@@ -4,6 +4,7 @@ import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
 import GoBackButton from '../components/GoBackButton/GoBackButton';
 import Cast from '../components/Cast/Cast';
+// import Review from '../components/Review/Review';
 import defaultImage from '../components/defaultImages/no_image_poster.jpg';
 import styles from './view.module.css';
 
@@ -67,7 +68,7 @@ export default function MovieDetailsView() {
             </NavLink>
 
             <NavLink
-              to="/"
+              to={`${url}/review`}
               className={styles.link}
               activeClassName={styles.activeLink}
             >
@@ -79,6 +80,9 @@ export default function MovieDetailsView() {
           <Route path={`${path}/cast`}>
             <Cast movieId={movieId} />
           </Route>
+          {/* <Route path={`${path}/review`}>
+            <Review movieId={movieId} />
+          </Route> */}
         </div>
       )}
     </>

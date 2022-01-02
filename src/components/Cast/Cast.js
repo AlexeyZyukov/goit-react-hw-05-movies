@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as APIservice from '../../components/services/APIservice';
+import * as APIservice from '../services/APIservice';
 import defaultImage from '../defaultImages/no_foto_image.jpg';
 
 export default function Cast() {
@@ -11,14 +11,14 @@ export default function Cast() {
     APIservice.fetchCast(movieId).then(res => setCast(res.cast));
   }, [movieId]);
 
-  console.log('movieId', movieId);
-  console.log('cast: ', cast);
+  //   console.log('movieId', movieId);
+  //   console.log('cast: ', cast);
 
   return cast ? (
     <ul>
       {cast.map(item => {
         return (
-          <li>
+          <li key={item.id}>
             <img
               src={
                 item.profile_path
