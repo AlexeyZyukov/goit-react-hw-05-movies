@@ -9,7 +9,7 @@ import styles from './view.module.css';
 
 export default function MovieDetailsView() {
   const { movieId } = useParams();
-  const { url } = useRouteMatch();
+  const { url, path } = useRouteMatch();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function MovieDetailsView() {
   console.log(useParams());
   console.log('movieId', movieId);
   console.log('url: ', url);
+  console.log('path: ', path);
 
   return (
     <>
@@ -58,7 +59,7 @@ export default function MovieDetailsView() {
           <h2>Additional information</h2>
           <nav>
             <NavLink
-              to={`${url}`}
+              to={`${url}/cast`}
               className={styles.link}
               activeClassName={styles.activeLink}
             >
@@ -75,8 +76,8 @@ export default function MovieDetailsView() {
           </nav>
 
           <hr />
-          <Route path={`${url}`}>
-            <Cast />
+          <Route path={`${path}/cast`}>
+            <Cast movieId={movieId} />
           </Route>
         </div>
       )}

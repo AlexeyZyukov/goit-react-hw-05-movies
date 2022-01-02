@@ -1,7 +1,7 @@
 import { Link, Route } from 'react-router-dom';
 import styles from './MoviesList.module.css';
 import defaultImage from '../defaultImages/no_image_poster.jpg';
-import MovieDetailsView from '../../views/MovieDetailsView';
+// import MovieDetailsView from '../../views/MovieDetailsView';
 
 export default function MoviesList({ url, movies }) {
   console.log('url: ', url);

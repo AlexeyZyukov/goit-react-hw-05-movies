@@ -1,15 +1,42 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link, useRouteMatch } from 'react-router-dom';
-// import Cast from '../Cast/Cast'
+import * as APIservice from '../../components/services/APIservice';
+import defaultImage from '../defaultImages/no_foto_image.jpg';
 
 export default function Cast() {
   const { movieId } = useParams();
-  const { url } = useRouteMatch;
+  const [cast, setCast] = useState(null);
 
-  return (
-    <>
-      Cast
-      <p>{movieId}</p>
-    </>
+  useEffect(() => {
+    APIservice.fetchCast(movieId).then(res => setCast(res.cast));
+  }, [movieId]);
+
+  console.log('movieId', movieId);
+  console.log('cast: ', cast);
+
+  return cast ? (
+    <ul>
+      {cast.map(item => {
+        return (
+          <li>
+            <img
+              src={
+                item.profile_path
+                  ? `https://image.tmdb.org/t/p/w200/${item.profile_path}`
+                  : defaultImage
+              }
+              alt={item.name}
+            />
+            <p>
+              Actor: {item.name}
+              <br />
+              Character: {item.character}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <p>There is no cast to show</p>
   );
 }
