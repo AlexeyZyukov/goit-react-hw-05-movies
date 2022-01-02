@@ -1,0 +1,21 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+  grid-column-gap: 10px;
+  grid-row-gap: 1em;
+  margin: 0;
+  padding: 10px;
+}
+
+.noBullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: solid 1px black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.actorImg {
+  min-width: 200px;
+}

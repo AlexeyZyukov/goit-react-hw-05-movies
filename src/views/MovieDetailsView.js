@@ -4,7 +4,7 @@ import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
 import GoBackButton from '../components/GoBackButton/GoBackButton';
 import Cast from '../components/Cast/Cast';
-// import Review from '../components/Review/Review';
+import Review from '../components/Review/Review';
 import defaultImage from '../components/defaultImages/no_image_poster.jpg';
 import styles from './view.module.css';
 
@@ -56,7 +56,7 @@ export default function MovieDetailsView() {
       )}
       <hr />
       {movie && (
-        <div>
+        <div className={styles.additionalInfo}>
           <h2>Additional information</h2>
           <nav>
             <NavLink
@@ -64,7 +64,7 @@ export default function MovieDetailsView() {
               className={styles.link}
               activeClassName={styles.activeLink}
             >
-              <li>Cast</li>
+              <li className={styles.noBullets}>Cast</li>
             </NavLink>
 
             <NavLink
@@ -72,7 +72,7 @@ export default function MovieDetailsView() {
               className={styles.link}
               activeClassName={styles.activeLink}
             >
-              <li>Review</li>
+              <li className={styles.noBullets}>Review</li>
             </NavLink>
           </nav>
 
@@ -80,9 +80,9 @@ export default function MovieDetailsView() {
           <Route path={`${path}/cast`}>
             <Cast movieId={movieId} />
           </Route>
-          {/* <Route path={`${path}/review`}>
+          <Route path={`${path}/review`}>
             <Review movieId={movieId} />
-          </Route> */}
+          </Route>
         </div>
       )}
     </>

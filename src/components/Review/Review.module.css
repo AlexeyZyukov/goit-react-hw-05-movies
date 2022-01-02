@@ -1,0 +1,10 @@
+.reviewsList {
+  padding: 30px;
+  text-align: justify;
+}
+
+.noBullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}

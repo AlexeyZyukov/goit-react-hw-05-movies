@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as APIservice from '../services/APIservice';
 import defaultImage from '../defaultImages/no_foto_image.jpg';
+import styles from './Cast.module.css';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -11,15 +12,16 @@ export default function Cast() {
     APIservice.fetchCast(movieId).then(res => setCast(res.cast));
   }, [movieId]);
 
-  //   console.log('movieId', movieId);
-  //   console.log('cast: ', cast);
+  // console.log('movieId', movieId);
+  // console.log('cast: ', cast);
 
   return cast ? (
-    <ul>
+    <ul className={styles.wrapper}>
       {cast.map(item => {
         return (
-          <li key={item.id}>
+          <li key={item.id} className={styles.noBullets}>
             <img
+              className={styles.actorImg}
               src={
                 item.profile_path
                   ? `https://image.tmdb.org/t/p/w200/${item.profile_path}`
