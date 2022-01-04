@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams, Route, useRouteMatch, NavLink } from 'react-router-dom';
+import {
+  useParams,
+  Route,
+  useRouteMatch,
+  NavLink,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
 import GoBackButton from '../components/GoBackButton/GoBackButton';
@@ -12,15 +19,19 @@ export default function MovieDetailsView() {
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     APIservice.fetchMovieFullInfo(movieId).then(setMovie);
   }, [movieId]);
 
-  console.log(useParams());
-  console.log('movieId', movieId);
-  console.log('url: ', url);
-  console.log('path: ', path);
+  // console.log(useParams());
+  // console.log('movieId', movieId);
+  // console.log('url: ', url);
+  // console.log('path: ', path);
+  console.log('location=> ', location);
+  console.log('history=> ', history);
 
   return (
     <>

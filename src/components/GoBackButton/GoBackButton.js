@@ -7,7 +7,7 @@ export default function GoBackButton() {
     <button
       type="button"
       className={styles.button}
-      onClick={() => history.go(-1)}
+      onClick={() => history.push('/movies')}
     >
       GoBack
     </button>
