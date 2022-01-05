@@ -3,27 +3,28 @@ import { useHistory, useLocation } from 'react-router-dom';
 import styles from './searchBar.module.css';
 
 export default function SearchBar() {
-  const [nameToSearch, setNameToSearch] = useState('');
+  const [movieToSearch, setMovieToSearch] = useState('');
   const history = useHistory();
   const location = useLocation();
 
-  console.log('location=> ', location);
+  // console.log('location=> ', location);
   console.log('history=> ', history);
 
   const handleInputChange = event => {
-    setNameToSearch(event.currentTarget.value);
-    console.log(event.currentTarget.value);
+    setMovieToSearch(event.currentTarget.value);
+    // console.log('input value: ', movieToSearch);
   };
 
   const onInputSubmit = event => {
     event.preventDefault();
-    console.log('Hi');
 
+    // onSubmit(movieToSearch)
+    history.push({ ...location, search: `query=${movieToSearch}` });
     reset();
   };
 
   const reset = () => {
-    setNameToSearch('');
+    setMovieToSearch('');
   };
 
   return (
@@ -35,7 +36,7 @@ export default function SearchBar() {
         placeholder="input movie to search"
         autoFocus={true}
         onChange={handleInputChange}
-        value={nameToSearch}
+        value={movieToSearch}
       ></input>
       <button type="submit" className={styles.button}>
         Search

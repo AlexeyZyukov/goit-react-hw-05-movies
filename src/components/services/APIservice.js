@@ -32,3 +32,9 @@ export function fetchReview(movieId) {
     `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`,
   );
 }
+
+export function fetchOnSearch(movieSearch) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movieSearch}`,
+  );
+}
