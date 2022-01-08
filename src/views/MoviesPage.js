@@ -13,12 +13,11 @@ export default function MoviesPage() {
   const history = useHistory();
   const location = useLocation();
 
-  console.log('location=> ', location.search);
-  console.log('history=> ', history);
+  // console.log('history=> ', history);
 
   const searchQuery = new URLSearchParams(location.search).get('query');
-  console.log('location=> ', location);
-  console.log(searchQuery);
+  // console.log('location=> ', location);
+  // console.log(searchQuery);
 
   // const handleFormSubmit = name => {
   //   name && history.push({ ...location, search: '' });

@@ -14,7 +14,7 @@ export default function PopularMovies() {
       setMovies(res.results),
     );
   }, []);
-  console.log(url);
+  // console.log(url);
 
   return (
     <>
