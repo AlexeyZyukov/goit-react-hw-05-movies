@@ -19,11 +19,6 @@ export default function MoviesPage() {
   // console.log('location=> ', location);
   // console.log(searchQuery);
 
-  // const handleFormSubmit = name => {
-  //   name && history.push({ ...location, search: '' });
-  //   console.log(name)
-  // };
-
   useEffect(() => {
     searchQuery &&
       APIservice.fetchOnSearch(searchQuery).then(res =>
