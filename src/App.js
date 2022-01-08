@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import HomePage from '../src/views/HomePage';
 import MoviesPage from './views/MoviesPage';
@@ -23,6 +23,8 @@ export default function App() {
         <Route path="/movies/:movieId">
           <MovieDetailsView />
         </Route>
+
+        <Redirect to="/" />
 
         <Route>
           <NotFoundView />
