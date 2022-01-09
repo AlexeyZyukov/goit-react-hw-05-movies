@@ -5,15 +5,12 @@ import defaultImage from '../defaultImages/no_foto_image.jpg';
 import styles from './Cast.module.css';
 
 export default function Cast() {
-  const { movieId } = useParams();
+  const slug = useParams();
   const [cast, setCast] = useState(null);
-
+  const movieId = slug.movieId.match(/[a-z0-9]+$/)[0];
   useEffect(() => {
     APIservice.fetchCast(movieId).then(res => setCast(res.cast));
   }, [movieId]);
-
-  // console.log('movieId', movieId);
-  // console.log('cast: ', cast);
 
   return cast ? (
     <ul className={styles.wrapper}>

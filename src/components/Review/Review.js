@@ -4,11 +4,9 @@ import * as APIservice from '../services/APIservice';
 import styles from './Review.module.css';
 
 export default function Review() {
-  const { movieId } = useParams();
+  const slug = useParams();
   const [review, setReview] = useState(null);
-
-  // console.log('movieId', movieId);
-  // console.log('review: ', review);
+  const movieId = slug.movieId.match(/[a-z0-9]+$/)[0];
 
   useEffect(() => {
     APIservice.fetchReview(movieId).then(res => setReview(res.results));

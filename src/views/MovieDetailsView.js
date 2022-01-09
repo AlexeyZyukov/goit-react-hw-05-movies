@@ -7,6 +7,7 @@ import {
   useLocation,
   useHistory,
 } from 'react-router-dom';
+// import slugify from 'slugify'
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
 import GoBackButton from '../components/GoBackButton/GoBackButton';
@@ -17,11 +18,12 @@ import styles from './view.module.css';
 
 export default function MovieDetailsView() {
   const [movie, setMovie] = useState(null);
-  const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const location = useLocation();
   const history = useHistory();
   const locationRef = useRef(location);
+  const slug = useParams();
+  const movieId = slug.movieId.match(/[a-z0-9]+$/)[0];
 
   useEffect(() => {
     APIservice.fetchMovieFullInfo(movieId).then(setMovie);
@@ -34,18 +36,20 @@ export default function MovieDetailsView() {
   // console.log('location=> ', location);
   // console.log('history=> ', history);
   // console.log('locationRef.state: ', locationRef.current.state);
+  console.log('slug: ', slug);
+  console.log('movieId: ', movieId);
 
   function goBack() {
-    const { pathname, search } = locationRef.current.state.from;
-    if (locationRef.current.state) {
-      history.push(search ? pathname + search : pathname);
-    } else {
-      const path = locationRef.current.state.pathname.includes('movies')
-        ? `/movies`
-        : '/';
-      history.push(path);
-    }
-    // console.log(pathname);
+    history.push(locationRef?.current?.state?.from?.location ?? '/');
+    // const { pathname, search } = locationRef.current.state.from;
+    // if (locationRef.current.state) {
+    //   history.push(search ? pathname + search : pathname);
+    // } else {
+    //   const path = pathname.includes('movies')
+    //     ? `/movies`
+    //     : '/';
+    //   history.push(path);
+    // } else { history.push('/')}
   }
 
   return (

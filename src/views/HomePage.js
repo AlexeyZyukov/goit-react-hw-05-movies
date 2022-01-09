@@ -19,7 +19,6 @@ export default function PopularMovies() {
   return (
     <>
       <PageHeading text="Popular movies" />
-      {/* <MoviesList url={url} movies={movies} /> */}
       <MoviesList url={`${url}movies`} movies={movies} />
     </>
   );

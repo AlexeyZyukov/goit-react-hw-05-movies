@@ -12,7 +12,7 @@ export default function GoBackButton({ onClick }) {
 
   return (
     <button type="button" className={styles.button} onClick={onClick}>
-      GoBack
+      {locationRef?.current?.state?.from?.label ?? 'GoBack'}
     </button>
   );
 }
