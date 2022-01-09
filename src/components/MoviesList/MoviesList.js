@@ -32,7 +32,6 @@ export default function MoviesList({ url, movies }) {
                 <li key={item.id} className={styles.noBullets}>
                   <Link
                     to={{
-                      // pathname: `${url}/${item.id}`,
                       pathname: `${url}/${makeSlug(
                         `${item.title} ${item.id}`,
                       )}`,
@@ -53,7 +52,6 @@ export default function MoviesList({ url, movies }) {
                       alt={item.title}
                     ></img>
                     <h4>{item.title}</h4>
-                    {makeSlug(`${item.title} ${item.id}`)}
                   </Link>
                 </li>
               ),
