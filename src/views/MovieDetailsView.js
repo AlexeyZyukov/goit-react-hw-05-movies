@@ -36,8 +36,8 @@ export default function MovieDetailsView() {
   // console.log('location=> ', location);
   // console.log('history=> ', history);
   // console.log('locationRef.state: ', locationRef.current.state);
-  console.log('slug: ', slug);
-  console.log('movieId: ', movieId);
+  // console.log('slug: ', slug);
+  // console.log('movieId: ', movieId);
 
   function goBack() {
     history.push(locationRef?.current?.state?.from?.location ?? '/');

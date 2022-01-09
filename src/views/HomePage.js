@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
-import MoviesList from '../components/MoviesList/MoviesList';
+import Preloader from '../components/Preloader/Prreloader';
+const MoviesList = lazy(() => import('../components/MoviesList/MoviesList'));
 
 export default function PopularMovies() {
   const { url } = useRouteMatch();
@@ -19,7 +20,9 @@ export default function PopularMovies() {
   return (
     <>
       <PageHeading text="Popular movies" />
-      <MoviesList url={`${url}movies`} movies={movies} />
+      <Suspense fallback={<Preloader />}>
+        <MoviesList url={`${url}movies`} movies={movies} />
+      </Suspense>
     </>
   );
 }

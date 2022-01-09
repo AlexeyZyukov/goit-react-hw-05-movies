@@ -6,15 +6,6 @@ import { string } from 'prop-types';
 
 export default function MoviesList({ url, movies }) {
   const location = useLocation();
-  const history = useHistory();
-
-  // const getMovieId = (array) => (
-  //   array && array.map(item => item.id
-  //   )
-  // );
-  // const movieId = getMovieId(movies);
-  // console.log('movieId: ', movieId);
-
   const makeSlug = string => slugify(string, { lower: true });
 
   // console.log('url: ', url);
