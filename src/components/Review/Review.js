@@ -5,14 +5,19 @@ import styles from './Review.module.css';
 
 export default function Review() {
   const slug = useParams();
-  const [review, setReview] = useState(null);
+  const [review, setReview] = useState('');
   const movieId = slug.movieId.match(/[a-z0-9]+$/)[0];
 
   useEffect(() => {
-    APIservice.fetchReview(movieId).then(res => setReview(res.results));
+    async function getReview() {
+      const resp = await APIservice.fetchReview(movieId);
+      const result = resp.results;
+      setReview(result);
+    }
+    if (movieId) getReview();
   }, [movieId]);
 
-  return review ? (
+  return review.length > 0 ? (
     <ul className={styles.reviewsList}>
       {review.map(item => {
         return (

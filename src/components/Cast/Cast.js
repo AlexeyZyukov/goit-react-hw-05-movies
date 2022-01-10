@@ -6,13 +6,13 @@ import styles from './Cast.module.css';
 
 export default function Cast() {
   const slug = useParams();
-  const [cast, setCast] = useState(null);
+  const [cast, setCast] = useState('');
   const movieId = slug.movieId.match(/[a-z0-9]+$/)[0];
   useEffect(() => {
     APIservice.fetchCast(movieId).then(res => setCast(res.cast));
   }, [movieId]);
 
-  return cast ? (
+  return cast.length > 0 ? (
     <ul className={styles.wrapper}>
       {cast.map(item => {
         return (
