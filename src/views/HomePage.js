@@ -10,12 +10,8 @@ export default function PopularMovies() {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    APIservice.fetchMoviesInTrend().then(res =>
-      // console.log(res.results)
-      setMovies(res.results),
-    );
+    APIservice.fetchMoviesInTrend().then(res => setMovies(res.results));
   }, []);
-  // console.log(url);
 
   return (
     <>

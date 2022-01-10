@@ -5,7 +5,6 @@ import PageHeading from '../components/PageHeading/PageHeading';
 import SearchBar from '../components/SearchBar/SearchBar';
 import * as APIservice from '../components/services/APIservice';
 import Preloader from '../components/Preloader/Preloader';
-import styles from './view.module.css';
 const MoviesList = lazy(() => import('../components/MoviesList/MoviesList'));
 
 export default function MoviesPage() {
@@ -13,11 +12,7 @@ export default function MoviesPage() {
   const history = useHistory();
   const location = useLocation();
 
-  // console.log('history=> ', history);
-
   const searchQuery = new URLSearchParams(location.search).get('query');
-  // console.log('location=> ', location);
-  // console.log(searchQuery);
 
   useEffect(() => {
     searchQuery &&

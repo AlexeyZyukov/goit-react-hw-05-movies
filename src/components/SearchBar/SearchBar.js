@@ -7,18 +7,13 @@ export default function SearchBar() {
   const history = useHistory();
   const location = useLocation();
 
-  // console.log('location=> ', location);
-  console.log('history=> ', history);
-
   const handleInputChange = event => {
     setMovieToSearch(event.currentTarget.value);
-    // console.log('input value: ', movieToSearch);
   };
 
   const onInputSubmit = event => {
     event.preventDefault();
 
-    // onSubmit(movieToSearch)
     history.push({ ...location, search: `query=${movieToSearch}` });
     reset();
   };

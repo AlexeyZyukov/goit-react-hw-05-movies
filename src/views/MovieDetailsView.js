@@ -7,7 +7,6 @@ import {
   useLocation,
   useHistory,
 } from 'react-router-dom';
-// import slugify from 'slugify'
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
 import GoBackButton from '../components/GoBackButton/GoBackButton';
@@ -29,27 +28,8 @@ export default function MovieDetailsView() {
     APIservice.fetchMovieFullInfo(movieId).then(setMovie);
   }, [movieId]);
 
-  // console.log(useParams());
-  // console.log('movieId', movieId);
-  // console.log('url: ', url);
-  // console.log('path: ', path);
-  // console.log('location=> ', location);
-  // console.log('history=> ', history);
-  // console.log('locationRef.state: ', locationRef.current.state);
-  // console.log('slug: ', slug);
-  // console.log('movieId: ', movieId);
-
   function goBack() {
     history.push(locationRef?.current?.state?.from?.location ?? '/');
-    // const { pathname, search } = locationRef.current.state.from;
-    // if (locationRef.current.state) {
-    //   history.push(search ? pathname + search : pathname);
-    // } else {
-    //   const path = pathname.includes('movies')
-    //     ? `/movies`
-    //     : '/';
-    //   history.push(path);
-    // } else { history.push('/')}
   }
 
   return (

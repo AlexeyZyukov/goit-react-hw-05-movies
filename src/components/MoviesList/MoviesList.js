@@ -2,17 +2,11 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import slugify from 'slugify';
 import styles from './MoviesList.module.css';
 import defaultImage from '../defaultImages/no_image_poster.jpg';
-import { string } from 'prop-types';
 
 export default function MoviesList({ url, movies }) {
   const location = useLocation();
   const makeSlug = string => slugify(string, { lower: true });
 
-  // console.log('url: ', url);
-  // console.log('movies: ', movies);
-  // console.log(movieId)
-  // console.log('location=> ', location);
-  // console.log('history=> ', history);
   return (
     <>
       <ul className={styles.wrapper}>
