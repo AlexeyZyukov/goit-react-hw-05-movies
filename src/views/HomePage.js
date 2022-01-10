@@ -2,7 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import PageHeading from '../components/PageHeading/PageHeading';
 import * as APIservice from '../components/services/APIservice';
-import Preloader from '../components/Preloader/Prreloader';
+import Preloader from '../components/Preloader/Preloader';
 const MoviesList = lazy(() => import('../components/MoviesList/MoviesList'));
 
 export default function PopularMovies() {

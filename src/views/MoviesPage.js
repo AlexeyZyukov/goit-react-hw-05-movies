@@ -1,12 +1,13 @@
 import { useHistory, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useState } from 'react/cjs/react.development';
 
 import PageHeading from '../components/PageHeading/PageHeading';
 import SearchBar from '../components/SearchBar/SearchBar';
-import MoviesList from '../components/MoviesList/MoviesList';
 import * as APIservice from '../components/services/APIservice';
+import Preloader from '../components/Preloader/Preloader';
 import styles from './view.module.css';
+const MoviesList = lazy(() => import('../components/MoviesList/MoviesList'));
 
 export default function MoviesPage() {
   const [movieSearch, setMovieSearch] = useState('');
@@ -30,7 +31,9 @@ export default function MoviesPage() {
     <>
       <PageHeading text="Movies" />
       <SearchBar />
-      <MoviesList url={`movies`} movies={movieSearch} />
+      <Suspense fallback={<Preloader />}>
+        <MoviesList url={`movies`} movies={movieSearch} />
+      </Suspense>
     </>
   );
 }
