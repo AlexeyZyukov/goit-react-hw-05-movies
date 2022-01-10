@@ -1,6 +1,5 @@
 import { useHistory, useLocation } from 'react-router-dom';
-import { useEffect, lazy, Suspense } from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useEffect, useState, lazy, Suspense } from 'react';
 
 import PageHeading from '../components/PageHeading/PageHeading';
 import SearchBar from '../components/SearchBar/SearchBar';
